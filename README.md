@@ -39,7 +39,7 @@ Por fim, é possível afirmar que o jogo do Mario é o principal da Nintendo. Po
 
   Para jogar baixe o aquivivo e execute - <a href="">Clique aqui </a>
   <br>
-  OBS - Pode aparecer que irá danificar seu aprelho, porem é completamente seguro! Caso queira conferir o código fonte <a href=""> Clique aqui </a>
+  OBS - Pode aparecer que irá danificar seu aprelho, porem é completamente seguro! Caso queira conferir o código fonte <a href="https://github.com/zallih/SuperMarioBros/tree/main/SuperMario"> Clique aqui </a>
 
   <h3>Controles:</h3>
     <p align="middle">•Ainda não escolhidos•</p>
