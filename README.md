@@ -1,5 +1,7 @@
 # 🔨Super Mario Bros
 
+<p align="middle">•Em andamento•</p>
+
 <img align="right" alt="zallih" width="150" src="https://media.discordapp.net/attachments/783761333358166056/872618413040730133/WhatsApp_Image_2021-08-04_at_19.42.37.jpeg?width=370&height=370">
   <br><br>
 <div style="display: inline_block"><br>
@@ -33,14 +35,14 @@ Por fim, é possível afirmar que o jogo do Mario é o principal da Nintendo. Po
   
   Criando Super Mario Bros com minha própria engine!
    <br><br>
-   <p align="middle">*Ainda não disponivel*</p>
+   <p align="middle">•Ainda não disponivel•</p>
 
   Para jogar baixe o aquivivo e execute - <a href="">Clique aqui </a>
   <br>
   OBS - Pode aparecer que irá danificar seu aprelho, porem é completamente seguro! Caso queira conferir o código fonte <a href=""> Clique aqui </a>
 
   <h3>Controles:</h3>
-    <p align="middle">*Ainda não escolhidos*</p>
+    <p align="middle">•Ainda não escolhidos•</p>
   
   W - Cima
   
