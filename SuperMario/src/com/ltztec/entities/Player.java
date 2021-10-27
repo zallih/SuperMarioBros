@@ -15,7 +15,12 @@ public class Player extends Entity{
 	
 	public boolean right, left;
 	public double speed = 1.1;
-	private double gravity = 1.3;
+	private double gravity = 1.2;
+	
+	public boolean jump = false;
+	public boolean isJumping = false;
+	public int jumpHeight = 32;
+	public int jumpFrames = 0;
 	
 	public int right_dir = 0, left_dir = 1;
 	public int dir = right_dir;
@@ -43,7 +48,7 @@ public class Player extends Entity{
 	
 	public void tick(){
 		
-		if(World.isFree((int)x, (int)(y+gravity))) {
+		if(World.isFree((int)x, (int)(y+gravity)) && isJumping == false) {
 			y+=gravity;
 		}
 		
@@ -59,7 +64,6 @@ public class Player extends Entity{
 			x -= speed;
 		}
 		
-		
 		if (moved) {
 			frames++;
 			if (frames == maxFrames) {
@@ -70,6 +74,36 @@ public class Player extends Entity{
 				}
 			}
 		}
+		
+		
+		
+		
+		if(jump == true) {
+			if(!World.isFree(this.getX(), this.getY()+1)) {
+				isJumping = true;
+			}else {
+				jump = false;
+			}
+		}
+		
+		if(isJumping == true) {
+			if(World.isFree(this.getX(), this.getY()-2)) {
+				y-=2;
+				jumpFrames+=2;
+				if(jumpFrames == jumpHeight) {
+					isJumping = false;
+					jump = false;
+					jumpFrames = 0;
+				}
+			} else {
+				isJumping = false;
+				jump = false;
+				jumpFrames = 0;
+			}
+		}
+		
+		
+		
 	}
 	
 
