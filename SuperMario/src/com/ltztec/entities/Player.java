@@ -17,7 +17,7 @@ public class Player extends Entity {
 
 	public boolean jump = false;
 	public boolean isJumping = false;
-	public int jumpHeight = 32;
+	public int jumpHeight = 40;
 	public int jumpFrames = 0;
 
 	public int right_dir = 0, left_dir = 1;
@@ -49,7 +49,10 @@ public class Player extends Entity {
 	}
 
 	public void tick() {
-
+		
+		Camera.x =  Camera.clamp(this.getX() - Game.WIDTH / 2, 0, World.WIDTH * 16 - Game.WIDTH);
+		Camera.y =  Camera.clamp(this.getY() - Game.HEIGHT / 2, 0, World.HEIGHT * 16 - Game.HEIGHT);
+		
 		if (World.isFree((int) x, (int) (y + gravity)) && isJumping == false) {
 			y += gravity;
 		}
