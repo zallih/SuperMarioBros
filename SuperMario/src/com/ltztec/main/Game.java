@@ -17,6 +17,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
+import com.ltztec.entities.Enemy;
 import com.ltztec.entities.Entity;
 import com.ltztec.entities.Player;
 import com.ltztec.graficos.Spritesheet;
@@ -37,8 +38,12 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 	public static World world;
 	public static List<Entity> entities;
+	public static List<Enemy> enemies;
 	public static Spritesheet spritesheet;
 	public static Player player;
+	
+	
+	public static int currentEnemy = 0;
 
 	public UI ui;
 
@@ -53,6 +58,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		// Inicializando objetos.
 		spritesheet = new Spritesheet("/spritesheet.png");
 		entities = new ArrayList<Entity>();
+		enemies = new ArrayList<Enemy>();
 		player = new Player(WIDTH / 2 - 30, HEIGHT / 2, 16, 16, 2, spritesheet.getSprite(0, 0, 16, 16));
 		world = new World("/level1.png");
 		ui = new UI();
@@ -96,6 +102,11 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		for (int i = 0; i < entities.size(); i++) {
 			Entity e = entities.get(i);
 			e.tick();
+		}
+		
+		if(Player.currentCoins == Player.maxCoins && Game.currentEnemy == 0) {
+			
+			World.restartGame();
 		}
 
 	}

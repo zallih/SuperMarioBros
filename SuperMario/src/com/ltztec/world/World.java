@@ -6,6 +6,10 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import com.ltztec.entities.Coins;
+import com.ltztec.entities.Enemy;
+import com.ltztec.entities.Entity;
+import com.ltztec.entities.Player;
 import com.ltztec.main.Game;
 
 public class World {
@@ -37,6 +41,21 @@ public class World {
 					} else if (pixelAtual == 0xFFD82800) {
 						Game.player.setX(xx * 16);
 						Game.player.setY(yy * 16);
+					}else if (pixelAtual == 0xFFC84C0C) {
+						//inimigo laranja
+						Enemy en = new Enemy(xx * 16, yy * 16, 16, 16, 1.5, Entity.ENEMY1_EN);
+						Game.entities.add(en);
+						Game.enemies.add(en);
+					}else if (pixelAtual == 0xFF008088) {
+						//inimigo azul
+						Enemy en = new Enemy(xx * 16, yy * 16, 16, 16, 1.5, Entity.ENEMY2_EN);
+						Game.entities.add(en);
+						Game.enemies.add(en);
+					}else if (pixelAtual == 0xFFFEE864) {
+						//moedas
+						Coins coins = new Coins(xx * 16, yy * 16, 16, 16, 1.5, Entity.COIN_EN);
+						Game.entities.add(coins);
+						Player.maxCoins++;
 					}
 				}
 			}
@@ -67,6 +86,7 @@ public class World {
 
 	public static void restartGame() {
 		// TODO: Aplicar método para reiniciar o jogo corretamente.
+		System.exit(2);
 		return;
 	}
 

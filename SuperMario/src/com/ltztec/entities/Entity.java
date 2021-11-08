@@ -16,11 +16,11 @@ import com.ltztec.world.World;
 
 public class Entity {
 	
-
-	public static BufferedImage MACA_SPRITE = Game.spritesheet.getSprite(0, 16, 16, 16);
-	public static BufferedImage ENEMY1 = Game.spritesheet.getSprite(16, 16,16,16);
-	public static BufferedImage ENEMY2 = Game.spritesheet.getSprite(32, 16,16,16);
-	public static BufferedImage ENEMY_GHOST = Game.spritesheet.getSprite(48, 16, 16, 16);
+	
+	
+	public static BufferedImage ENEMY1_EN = Game.spritesheet.getSprite(32, 32, 16, 16);
+	public static BufferedImage ENEMY2_EN = Game.spritesheet.getSprite(32, 48, 16, 16);
+	public static BufferedImage COIN_EN = Game.spritesheet.getSprite(0, 64, 16, 16);
 	
 	protected double x;
 	protected double y;

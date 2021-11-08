@@ -15,11 +15,17 @@ public class Player extends Entity {
 	public double speed = 1.2;
 	private double gravity = 1.2;
 
+	public double life = 100, maxLife = 100;
+
+	public static int currentCoins = 0, maxCoins = 0; 
+	
 	public boolean jump = false;
 	public boolean isJumping = false;
 	public int jumpHeight = 40;
 	public int jumpFrames = 0;
-
+	private double vspd = 0;
+	
+	
 	public int right_dir = 0, left_dir = 1;
 	public int dir = right_dir;
 
@@ -49,15 +55,53 @@ public class Player extends Entity {
 	}
 
 	public void tick() {
-		
-		Camera.x =  Camera.clamp(this.getX() - Game.WIDTH / 2, 0, World.WIDTH * 16 - Game.WIDTH);
-		Camera.y =  Camera.clamp(this.getY() - Game.HEIGHT / 2, 0, World.HEIGHT * 16 - Game.HEIGHT);
-		
-		if (World.isFree((int) x, (int) (y + gravity)) && isJumping == false) {
-			y += gravity;
-		}
 
 		depth = 2;
+//		vspd+=gravity;
+//		if(!World.isFree((int)x,(int)(y+1)) && jump)
+//		{
+//			vspd = -10;
+//			jump = false;
+//		}
+//		
+//		if(!World.isFree((int)x,(int)(y+vspd))) {
+//			
+//			int signVsp = 0;
+//			if(vspd >= 0)
+//			{
+//				signVsp = 1;
+//			}else  {
+//				signVsp = -1;
+//			}
+//			while(World.isFree((int)x,(int)(y+signVsp))) {
+//				y = y+signVsp;
+//			}
+//			vspd = 0;
+//		}
+//		
+//		y = y + vspd;
+		
+		Camera.x = Camera.clamp(this.getX() - Game.WIDTH / 2, 0, World.WIDTH * 16 - Game.WIDTH);
+		Camera.y = Camera.clamp(this.getY() - Game.HEIGHT / 2, 0, World.HEIGHT * 16 - Game.HEIGHT);
+
+		if (World.isFree((int) x, (int) (y + gravity)) && isJumping == false) {
+			y += gravity;
+
+			// batendo no inimigo
+			for (int i = 0; i < Game.entities.size(); i++) {
+				Entity e = Game.entities.get(i);
+				if (e instanceof Enemy) {
+					if (Entity.isColidding(this, e)) {
+						isJumping = true;
+						jumpHeight = 32;
+						((Enemy) e).life -= 2;
+
+					}
+				}
+			}
+
+		}
+
 		moved = false;
 		if (right && World.isFree((int) (x + speed), this.getY())) {
 			moved = true;
@@ -92,6 +136,7 @@ public class Player extends Entity {
 			if (World.isFree(this.getX(), this.getY() - 2)) {
 				y -= 2;
 				jumpFrames += 2;
+				jumpHeight = 40;
 				if (jumpFrames == jumpHeight) {
 					isJumping = false;
 					jump = false;
@@ -102,6 +147,31 @@ public class Player extends Entity {
 				jump = false;
 				jumpFrames = 0;
 			}
+		}
+
+		// inimigo batendo no player
+		for (int i = 0; i < Game.entities.size(); i++) {
+			Entity e = Game.entities.get(i);
+			if (e instanceof Enemy) {
+				if (Entity.isColidding(this, e)) {
+					life-=0.3;
+				}
+			}
+		}
+		
+		//Colisão com moeda
+		for (int i = 0; i < Game.entities.size(); i++) {
+			Entity e = Game.entities.get(i);
+			if (e instanceof Coins) {
+				if (Entity.isColidding(this, e)) {
+					Player.currentCoins++;
+					Game.entities.remove(i);
+				}
+			}
+		}
+		
+		if(life == 0) {
+			World.restartGame();
 		}
 
 	}
