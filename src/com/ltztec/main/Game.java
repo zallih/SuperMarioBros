@@ -26,8 +26,7 @@ import com.ltztec.world.World;
 
 public class Game extends Canvas implements Runnable, KeyListener, MouseListener, MouseMotionListener {
 
-	
-	//teste
+
 	private static final long serialVersionUID = 1L;
 	public static JFrame frame;
 	private Thread thread;
