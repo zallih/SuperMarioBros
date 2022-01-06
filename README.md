@@ -54,5 +54,5 @@ Por fim, é possível afirmar que o jogo do Mario é o principal da Nintendo. Po
 </div>
 
   <img align="right" alt="zallih" width="120" src="https://cdn.discordapp.com/attachments/882354770709479427/885547375156944906/my-octocat-1631200526625.png">
- <p align="middle">  Esse jogo possui NÃO o algoritimo *A</p>
+ <p align="middle">  Esse jogo NÃO possui o algoritimo *A</p>
 
